@@ -8,6 +8,17 @@ const messages = [
 
 export default function App()
 {
+    return (
+        <div>
+            <Steps />
+            <Steps />
+        </div>
+    )
+}
+
+
+function Steps()
+{
     //state--> called as react hooks 
     const [step, setStep] = useState(1);
 
@@ -22,14 +33,15 @@ export default function App()
     function handlePrevious(){
         if(step > 1)
         {
-            setStep(step - 1);
+            setStep((current_step)=> current_step-1);
         }
     }
 
     function handleNext(){
         if(step < 3)
         {
-            setStep(step + 1);
+            setStep((current_step)=> current_step + 1);
+            // setStep((current_step)=>current_step + 1);
         }
         //Bad practice
         // setTest({name:"Saurabh"});
@@ -37,9 +49,9 @@ export default function App()
 
     return (
 
-       <>
+       <div>
 
-            <button className="close" onClick={()=>setIsOpen(!isOpen)}>
+            <button className="close" onClick={()=>setIsOpen((is)=> !is)}>
                  &times;
             </button>
             { isOpen &&(
@@ -69,7 +81,7 @@ export default function App()
         
                 </div>
             )}
-       </>
+       </div>
 
        
     );
